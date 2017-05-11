@@ -1,5 +1,6 @@
 package com.example.ianno.simplecontactwithorm;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.example.ianno.simplecontactwithorm.Entity.Contact;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), AddContact.class));
+            startActivityForResult(new Intent(view.getContext(), AddContact.class), 1);
             }
         });
     }
@@ -48,5 +52,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1)
+        {
+            if(resultCode == Activity.RESULT_OK)
+            {
+                Toast.makeText(this, data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
+            }
+            if(resultCode == Activity.RESULT_CANCELED)
+            {
+                Toast.makeText(this, data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
