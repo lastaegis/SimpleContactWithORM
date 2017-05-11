@@ -1,13 +1,15 @@
 package com.example.ianno.simplecontactwithorm.Entity;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
+import com.orm.dsl.Table;
 
+@Table
 public class Contact extends SugarRecord{
 
-    private int contactId;
-    private String contactName   = "";
-    private String contactPhone  = "";
-    private String contactEmail  = "";
+    private String contactName;
+    private String contactPhone;
+    private String contactEmail;
 
     public Contact()
     {
@@ -15,7 +17,7 @@ public class Contact extends SugarRecord{
     }
 
     public Contact(String contactName, String contactPhone, String contactEmail) {
-        this.contactName = contactName;
+        this.contactName  = contactName;
         this.contactPhone = contactPhone;
         this.contactEmail = contactEmail;
     }

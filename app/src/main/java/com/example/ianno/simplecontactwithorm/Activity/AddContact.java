@@ -1,4 +1,4 @@
-package com.example.ianno.simplecontactwithorm;
+package com.example.ianno.simplecontactwithorm.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.ianno.simplecontactwithorm.Entity.Contact;
+import com.example.ianno.simplecontactwithorm.R;
 
 public class AddContact extends AppCompatActivity {
 
@@ -45,6 +46,14 @@ public class AddContact extends AppCompatActivity {
 
     public void backToMainMenu(View view)
     {
+        Intent intent = new Intent();
+        intent.putExtra("result", "Cancel by user");
+        setResult(Activity.RESULT_CANCELED, intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("result", "Cancel by user");
         setResult(Activity.RESULT_CANCELED, intent);
